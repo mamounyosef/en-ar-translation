@@ -1,0 +1,13 @@
+{
+  "rows":827576,
+  "columns":[
+    "en",
+    "ar"
+  ],
+  "max_seq_len_reference":128,
+  "duplicate_pairs_before_dedup":95353,
+  "duplicate_ratio_before_dedup":0.1031982329,
+  "swap_count":1,
+  "rededup_removed_after_swap":0,
+  "diacritics_removed_chars":136473
+}

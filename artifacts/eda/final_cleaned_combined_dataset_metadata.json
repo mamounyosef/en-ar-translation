@@ -1,0 +1,10 @@
+{
+  "rows":827576,
+  "columns":[
+    "en",
+    "ar"
+  ],
+  "parquet_path":"c:\\My Projects\\en-ar-translation\\artifacts\\eda\\final_cleaned_combined_dataset.parquet",
+  "csv_path":"c:\\My Projects\\en-ar-translation\\artifacts\\eda\\final_cleaned_combined_dataset.csv",
+  "max_seq_len_reference":128
+}
