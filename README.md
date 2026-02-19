@@ -15,12 +15,12 @@ This repository contains:
 - Initial full training phase completed to `32,000` steps.
 - Additional resumed training phase completed to `37,000` steps (stopped manually).
 - Best-so-far validation metrics have improved after resumed training.
-- Full test-set evaluation section is prepared in notebook and pending final run completion.
+- Full test-set evaluation completed for the best checkpoint (`best_model`).
 
 ## Transformer Architecture
 
 <!-- TODO: Replace with your final architecture image path -->
-![Transformer Architecture](docs/images/transformer-architecture.webp)
+<img src="docs/images/transformer-architecture.webp" width="350" alt="Transformer Architecture">
 
 Reference: *[Attention Is All You Need](https://arxiv.org/abs/1706.03762)* (Vaswani et al., 2017).  
 Architecture note: this implementation follows the same high-level Transformer design, with `pre-norm` blocks (LayerNorm before each attention/FFN sublayer) instead of the original paper's post-sublayer normalization, plus an additional final normalization layer at the end of the decoder.
@@ -43,7 +43,7 @@ Training phases:
 Total cumulative training time so far:
 - `11.47 h` (`5.34 + 6.13`)
 
-## Best Validation Metrics So Far
+## Best Validation Metrics
 
 Source: `artifacts/runs/20260218_003516/eval_metrics.csv`
 
@@ -72,25 +72,125 @@ Model/training setup in `notebooks/02_model_training.ipynb` includes:
 
 ## Pending Sections
 
-### Test Results (To Fill After Final Test Run)
+### Test Results (Best Checkpoint on Test Split)
 
-- Overall BLEU:
-- Overall chrF:
-- Overall COMET:
-- BLEU EN->AR:
-- BLEU AR->EN:
-- chrF EN->AR:
-- chrF AR->EN:
-- Evaluation runtime:
+Source: `artifacts/runs/20260218_003516/test_metrics_best_model_full.json`
+
+- Split: `test`
+- Checkpoint: `best_model`
+- Num beams: `3`
+- Evaluated samples: `9,600`
+- Evaluated batches: `150`
+- Overall BLEU: `1.8862`
+- Overall chrF: `25.0110`
+- Overall COMET: `0.3116`
+- BLEU EN->AR: `1.4024`
+- BLEU AR->EN: `2.3359`
+- chrF EN->AR: `27.9461`
+- chrF AR->EN: `23.2507`
+- Evaluation runtime: `1.10 h`
+
+### Generated Samples
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>direction</th>
+      <th>source_text</th>
+      <th>reference_text</th>
+      <th>generated_text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>ar_to_en</td>
+      <td>&lt;2en&gt; "عربة حصان مجرة تقود في شارع منحرف في كندا"</td>
+      <td>a horse drawn carriage driving down a cobbled street in canada</td>
+      <td>a galactic horse carriage driving down a cliff street in canada royalty illustration stock illustration on a picture of a bird that is being driven by a forested</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>en_to_ar</td>
+      <td>&lt;2ar&gt; I think optimism is the key to overcoming obstacles.</td>
+      <td>أظن أن التفاؤل هو أساس التغلب على العقبات.</td>
+      <td>أظن أن التفاؤل هو مفتاح التغلب على العقبات. ‏. ‎.‎.أعتقد أن التفاؤل. ‬.القرار.”.'التغلب على</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>en_to_ar</td>
+      <td>&lt;2ar&gt; i do hope youre not vegan</td>
+      <td>آمل حقا أنك غير نباتية</td>
+      <td>أتمنى ألا تكون (فيغان) ؟ !</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>en_to_ar</td>
+      <td>&lt;2ar&gt; help help me</td>
+      <td>النجدة النجدة</td>
+      <td>النجدة، النجدة! ساعدوني</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>en_to_ar</td>
+      <td>&lt;2ar&gt; a police case a friend who needs your help</td>
+      <td>قضية شرطة صديق يحتاج لمساعدتك</td>
+      <td>حالة شرطة، صديق يحتاج لمساعدتكم. ‏ ‎. ‬ ‫من يريد المساعدة. ‏‏‏‏"مساعدتك_BAR_</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>ar_to_en</td>
+      <td>&lt;2en&gt; اللوحة من قبل شخص</td>
+      <td>the painting by person</td>
+      <td>the painting by person person royalty illustration royalty illustration stock illustration royalty image png clipart clipart clipart print displayed on a picture of the painting is shown with a woman in</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>ar_to_en</td>
+      <td>&lt;2en&gt; أين تعيش والدتك ؟</td>
+      <td>where does your mother live</td>
+      <td>where do you live your mother and i dont know what it was like to do with her father in the world where is she going to be alive. k</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>en_to_ar</td>
+      <td>&lt;2ar&gt; thats it</td>
+      <td>! إنتهى الأمر</td>
+      <td>أهذا كل شيء؟ -أجل . ! ـ نعم! ـ هذا هو... ـ ـ ـ هل أنت بخير؟ ـ ـ شكرا جزيلا لك ؟ ـ أجل.</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ar_to_en</td>
+      <td>&lt;2en&gt; ستكون على ما يرام</td>
+      <td>youll be fine</td>
+      <td>shes gonna be all right  yeah i dont know what you want to do with this guy in the world and then shes going to make a lot of room</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>ar_to_en</td>
+      <td>&lt;2en&gt; تحتاج أمتنا منكم التصويت اليوم</td>
+      <td>our nation needs you to vote today</td>
+      <td>our mother of you needs to vote today. kmtlvdwahu mnfi.gh. nb251</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>en_to_ar</td>
+      <td>&lt;2ar&gt; He who seeks excellence never stops.</td>
+      <td>من يسعى للتميز لا يتوقف أبدا.</td>
+      <td>من يسعى للتميز لا يتوقف أبدا. ‏ ‎. ‬.”.’.من يسعى إلى التميز. [الأشخاص الذين لا يتوقفون.</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 ### Visual Plots (To Add)
 
-- Training loss vs step
-- Validation loss vs step
-- BLEU vs step
-- chrF vs step
-- LR schedule vs step
-- Direction-specific BLEU/chrF trends
+<img src="artifacts\runs\20260218_003516\plots\key_curves_overlay.png" width="350" alt="Evaluation Metrics Plots ">
+
+<img src="artifacts\runs\20260218_003516\plots\eval_metrics_overview.png" width="350" alt="Evaluation Metrics Plots ">
+
+<img src="artifacts\runs\20260218_003516\plots\bleu_chrf.png" width="350" alt="BLEU and chrF plots">
 
 ## Project Structure
 
