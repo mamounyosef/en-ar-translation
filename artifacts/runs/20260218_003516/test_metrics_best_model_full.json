@@ -1,0 +1,16 @@
+{
+  "run_id": "20260218_003516",
+  "checkpoint": "best_model",
+  "split": "test",
+  "num_beams": 3,
+  "eval_seconds": 3945.731761455536,
+  "num_samples": 9600.0,
+  "num_batches": 150.0,
+  "bleu": 1.8861876043652999,
+  "chrf": 25.01103320197753,
+  "comet": 0.31156476547941564,
+  "bleu_en_to_ar": 1.4024314764659562,
+  "bleu_ar_to_en": 2.3359413288233,
+  "chrf_en_to_ar": 27.94611832159014,
+  "chrf_ar_to_en": 23.250716198627092
+}

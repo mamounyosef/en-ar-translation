@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-02-18T19:01:41.505238",
+  "resume_run_id": "20260218_003516",
+  "resume_checkpoint_name": "best_model",
+  "resume_start_step": 30800,
+  "resume_max_steps": 48000,
+  "resume_log_every_steps": 40,
+  "resume_eval_every_steps": 400,
+  "resume_save_every_steps": 500,
+  "resume_max_val_batches": 300,
+  "resume_keep_last_n_checkpoints": null,
+  "resume_text_metric_num_beams": 1,
+  "resume_max_text_metric_batches_log": 8,
+  "resume_max_text_metric_batches_eval": 32,
+  "resume_enable_comet": false,
+  "per_device_train_batch_size": 24,
+  "gradient_accumulation_steps": 32,
+  "effective_batch_size": 768
+}

@@ -1,0 +1,2 @@
+run_id,checkpoint,split,num_beams,eval_seconds,num_samples,num_batches,bleu,chrf,comet,bleu_en_to_ar,bleu_ar_to_en,chrf_en_to_ar,chrf_ar_to_en
+20260218_003516,best_model,test,3,3945.731761455536,9600.0,150.0,1.8861876043652999,25.01103320197753,0.31156476547941564,1.4024314764659562,2.3359413288233,27.94611832159014,23.250716198627092
