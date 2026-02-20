@@ -19,7 +19,6 @@ This repository contains:
 
 ## Transformer Architecture
 
-<!-- TODO: Replace with your final architecture image path -->
 <img src="docs/images/transformer-architecture.webp" width="350" alt="Transformer Architecture">
 
 Reference: *[Attention Is All You Need](https://arxiv.org/abs/1706.03762)* (Vaswani et al., 2017).  
@@ -70,7 +69,7 @@ Model/training setup in `notebooks/02_model_training.ipynb` includes:
 - Optimizer: `AdamW` (`lr=3e-4`, `weight_decay=0.01`, `betas=(0.9, 0.98)`, `eps=1e-8`)
 - Scheduler: `get_cosine_with_min_lr_schedule_with_warmup` (`warmup_ratio=0.015`, `min_lr_rate=0.10`)
 
-## Pending Sections
+## Evaluation and Outputs
 
 ### Test Results (Best Checkpoint on Test Split)
 
@@ -184,13 +183,13 @@ Source: `artifacts/runs/20260218_003516/test_metrics_best_model_full.json`
 </table>
 </div>
 
-### Visual Plots (To Add)
+### Visual Plots
 
-<img src="artifacts\runs\20260218_003516\plots\key_curves_overlay.png" width="350" alt="Evaluation Metrics Plots ">
+<img src="artifacts/runs/20260218_003516/plots/key_curves_overlay.png" alt="Evaluation Metrics Plots ">
 
-<img src="artifacts\runs\20260218_003516\plots\eval_metrics_overview.png" width="350" alt="Evaluation Metrics Plots ">
+<img src="artifacts/runs/20260218_003516/plots/bleu_chrf.png" width="900" alt="BLEU and chrF plots">
 
-<img src="artifacts\runs\20260218_003516\plots\bleu_chrf.png" width="350" alt="BLEU and chrF plots">
+<img src="artifacts/runs/20260218_003516/plots/eval_metrics_overview.png" width="650" alt="Evaluation Metrics Plots ">
 
 ## Project Structure
 
@@ -199,14 +198,18 @@ en-ar-translation/
 |- notebooks/
 |  |- 01_dataset_discovery.ipynb
 |  |- 02_model_training.ipynb
+|- scripts/
+|  |- 01_dataset_discovery.py
+|  |- 02_model_training.py
 |- src/
 |  |- deep_agents_from_scratch/
 |- dataset/
+|- docs/
+|  |- images/
 |- artifacts/
 |  |- eda/
 |  |- tokenizer/
 |  |- runs/
-|- checkpoints/
 |- README.md
 ```
 
@@ -244,5 +247,6 @@ Final split basis used in training notebook:
 
 ## Notes
 
-- Truncation in EDA is a proxy; actual model truncation is token-based in notebook training.
+- The current results are promising and reasonably strong for this training stage, while still leaving clear room for further improvement through additional tuning and training refinements.
 - COMET can be enabled/disabled by evaluation configuration; earlier run logs include phases with COMET disabled.
+- The `scripts/` directory contains the main runnable project code for dataset processing and model training, for the full complete code with testing on the test split check the notebooks.
